@@ -6,7 +6,7 @@ using PepperDash.Core;
 using PepperDash.Essentials.Core;
 using PepperDash.Essentials.Core.Bridges;
 
-namespace EssentialsPluginTemplate
+namespace MockOccupancyDetector
 {
 	/// <summary>
 	/// Plugin device
@@ -15,9 +15,9 @@ namespace EssentialsPluginTemplate
 	/// Rename the class to match the device plugin being developed.
 	/// </remarks>
 	/// <example>
-	/// "EssentialsPluginDeviceTemplate" renamed to "SamsungMdcDevice"
+	/// "MockOccupancyDetector" renamed to "SamsungMdcDevice"
 	/// </example>
-	public class EssentialsPluginDeviceTemplate : EssentialsBridgeableDevice
+	public class MockOccupancyDetector : EssentialsBridgeableDevice
 	{
 		// TODO [ ] Add, modify, remove properties and fields as needed for the plugin being developed
 		private readonly IBasicCommunication _comms;
@@ -33,7 +33,7 @@ namespace EssentialsPluginTemplate
 		private byte[] _commsByteBuffer = { };
 
 
-		private EssentialsPluginConfigObjectTemplate _config;
+		private MockOccupancyDetectorPluginConfigObject _config;
 
 		/// <summary>
 		/// Connects/disconnects the comms of the plugin device
@@ -81,7 +81,7 @@ namespace EssentialsPluginTemplate
 		/// <param name="name"></param>
 		/// <param name="config"></param>
 		/// <param name="comms"></param>
-		public EssentialsPluginDeviceTemplate(string key, string name, EssentialsPluginConfigObjectTemplate config, IBasicCommunication comms)
+		public MockOccupancyDetector(string key, string name, MockOccupancyDetectorPluginConfigObject config, IBasicCommunication comms)
 			: base(key, name)
 		{
 			Debug.Console(0, this, "Constructing new {0} instance", name);
@@ -127,7 +127,7 @@ namespace EssentialsPluginTemplate
 		/// <param name="bridge"></param>
 		public override void LinkToApi(BasicTriList trilist, uint joinStart, string joinMapKey, EiscApiAdvanced bridge)
 		{
-			var joinMap = new EssentialsPluginBridgeJoinMapTemplate(joinStart);
+			var joinMap = new MockOccupancyDetectorPluginBridgeJoinMap(joinStart);
 
 			// This adds the join map to the collection on the bridge
 			if (bridge != null)

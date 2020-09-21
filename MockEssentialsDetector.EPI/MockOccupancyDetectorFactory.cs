@@ -2,7 +2,7 @@
 using PepperDash.Core;
 using PepperDash.Essentials.Core;
 
-namespace EssentialsPluginTemplate
+namespace MockOccupancyDetector
 {
 	/// <summary>
 	/// Plugin device factory
@@ -13,7 +13,7 @@ namespace EssentialsPluginTemplate
 	/// <example>
 	/// "EssentialsPluginFactoryTemplate" renamed to "SamsungMdcFactory"
 	/// </example>
-    public class EssentialsPluginFactoryTemplate : EssentialsPluginDeviceFactory<EssentialsPluginDeviceTemplate>
+    public class MockOccupancyDetectorPluginFactory : EssentialsPluginDeviceFactory<MockOccupancyDetector>
     {
 		/// <summary>
 		/// Plugin device factory constructor
@@ -31,7 +31,7 @@ namespace EssentialsPluginTemplate
 #pragma warning restore 1570
 		/// </code>
 		/// </example>
-        public EssentialsPluginFactoryTemplate()
+        public MockOccupancyDetectorPluginFactory()
         {
             // Set the minimum Essentials Framework Version
 			// TODO [ ] Update the Essentials minimum framework version which this plugin has been tested against
@@ -43,7 +43,7 @@ namespace EssentialsPluginTemplate
         }
         
 		/// <summary>
-		/// Builds and returns an instance of EssentialsPluginDeviceTemplate
+		/// Builds and returns an instance of MockOccupancyDetector
 		/// </summary>
 		/// <param name="dc">device configuration</param>
 		/// <returns>plugin device or null</returns>
@@ -57,7 +57,7 @@ namespace EssentialsPluginTemplate
             Debug.Console(1, "[{0}] Factory Attempting to create new device from type: {1}", dc.Key, dc.Type);	       
 
 			// get the plugin device properties configuration object & check for null 
-            var propertiesConfig = dc.Properties.ToObject<EssentialsPluginConfigObjectTemplate>();
+            var propertiesConfig = dc.Properties.ToObject<MockOccupancyDetectorPluginConfigObject>();
 	        if (propertiesConfig == null)
 	        {
 		        Debug.Console(0, "[{0}] Factory: failed to read properties config for {1}", dc.Key, dc.Name);
@@ -85,7 +85,7 @@ namespace EssentialsPluginTemplate
 				return null;
 			}
 
-            return new EssentialsPluginDeviceTemplate(dc.Key, dc.Name, propertiesConfig, comms);
+            return new MockOccupancyDetector(dc.Key, dc.Name, propertiesConfig, comms);
         }
 
     }

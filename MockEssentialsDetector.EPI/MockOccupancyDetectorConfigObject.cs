@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using PepperDash.Essentials.Core;
 
-namespace EssentialsPluginTemplate
+namespace MockOccupancyDetector
 {
 	/// <summary>
 	/// Plugin device configuration object
@@ -14,7 +14,7 @@ namespace EssentialsPluginTemplate
 	/// "EssentialsPluginConfigObjectTemplate" renamed to "SamsungMdcConfig"
 	/// </example>
 	[ConfigSnippet("\"properties\":{\"control\":{}")]
-	public class EssentialsPluginConfigObjectTemplate
+	public class MockOccupancyDetectorPluginConfigObject
 	{
 		/// <summary>
 		/// JSON control object
@@ -139,7 +139,7 @@ namespace EssentialsPluginTemplate
 		/// </code>
 		/// </example>
 		[JsonProperty("DeviceDictionary")]
-		public Dictionary<string, EssentialsPluginConfigObjectDictionaryTemplate> DeviceDictionary { get; set; }
+		public Dictionary<string, MockOccupancyDetectorPluginConfigObjectDictionary> DeviceDictionary { get; set; }
 
 		/// <summary>
 		/// Constuctor
@@ -148,9 +148,9 @@ namespace EssentialsPluginTemplate
 		/// If using a collection you must instantiate the collection in the constructor
 		/// to avoid exceptions when reading the configuration file 
 		/// </remarks>
-		public EssentialsPluginConfigObjectTemplate()
+		public MockOccupancyDetectorPluginConfigObject()
 		{
-			DeviceDictionary = new Dictionary<string, EssentialsPluginConfigObjectDictionaryTemplate>();
+			DeviceDictionary = new Dictionary<string, MockOccupancyDetectorPluginConfigObjectDictionary>();
 		}
 	}
 
@@ -172,7 +172,7 @@ namespace EssentialsPluginTemplate
 	/// }
 	/// </code>
 	/// </example>
-	public class EssentialsPluginConfigObjectDictionaryTemplate
+	public class MockOccupancyDetectorPluginConfigObjectDictionary
 	{
 		/// <summary>
 		/// Serializes collection name property
