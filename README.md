@@ -16,6 +16,9 @@ After forking this repository into your own GitHub space, you can create a new r
 
 The [Essentials](https://github.com/PepperDash/Essentials) libraries are required. They referenced via nuget. You must have nuget.exe installed and in the `PATH` environment variable to use the following command. Nuget.exe is available at [nuget.org](https://dist.nuget.org/win-x86-commandline/latest/nuget.exe).
 
+## Troubles Installing or Running Nuget on Windows
+Nuget commands will run if the Nuget.exe is in the same folder your command prompt is attempting to run the Nuget commands in. Follow the following link to add the Nuget.exe to your Windows systems local variable environmental path. Directions on how to proceed are located on [stackoverflow.com](https://stackoverflow.com/questions/45610728/nuget-is-not-a-recognized-as-an-internal-or-external-command/45613370).
+
 ### Installing Dependencies
 
 To install dependencies once nuget.exe is installed, run the following command from the root directory of your repository:
