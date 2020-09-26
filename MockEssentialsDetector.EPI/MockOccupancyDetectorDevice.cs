@@ -1,6 +1,7 @@
 ﻿// For Basic SIMPL# Classes
 // For Basic SIMPL#Pro classes
 
+using Crestron.SimplSharp;
 using Crestron.SimplSharpPro.DeviceSupport;
 using PepperDash.Core;
 using PepperDash.Essentials.Core;
@@ -17,11 +18,29 @@ namespace MockOccupancyDetector
 	/// <example>
 	/// "MockOccupancyDetector" renamed to "SamsungMdcDevice"
 	/// </example>
-	public class MockOccupancyDetector : EssentialsBridgeableDevice
+	public class MockOccupancyDetector : EssentialsBridgeableDevice, IOccupancyStatusProvider
 	{
 		// TODO [ ] Add, modify, remove properties and fields as needed for the plugin being developed
 		private readonly IBasicCommunication _comms;
 		private readonly GenericCommunicationMonitor _commsMonitor;
+        private bool _isOccupied;
+        public bool IsOccupied
+        {
+            get 
+            {
+                return _isOccupied;
+            }
+
+            set
+            {
+                if (value != _isOccupied)
+                {
+                    _isOccupied = value;
+                    RoomIsOccupiedFeedback.FireUpdate();
+                }
+            }
+        }
+
 
 		// _comms gather for ASCII based API's
 		// TODO [ ] If not using an ASCII based API, delete the properties below
@@ -74,6 +93,25 @@ namespace MockOccupancyDetector
 		/// </summary>
 		public IntFeedback StatusFeedback { get; private set; }
 
+        #region IOccupancyStatusProvider Members
+
+        public BoolFeedback RoomIsOccupiedFeedback { get; private set; }
+
+        #endregion
+
+        public void SetOccupiedStatus(string state)
+        {
+            bool s;
+            if (state == "true")
+                s = true;
+            else if (state == "false")
+                s = false;
+            else
+                return;
+
+            IsOccupied = s;
+        }
+
 		/// <summary>
 		/// Plugin device constructor
 		/// </summary>
@@ -84,6 +122,10 @@ namespace MockOccupancyDetector
 		public MockOccupancyDetector(string key, string name, MockOccupancyDetectorPluginConfigObject config, IBasicCommunication comms)
 			: base(key, name)
 		{
+            RoomIsOccupiedFeedback = new BoolFeedback(() => IsOccupied);
+
+            CrestronConsole.AddNewConsoleCommand((s) => SetOccupiedStatus(s), "setOccupiedState", "Sets the state of the mock Occ detector [true/false]", ConsoleAccessLevelEnum.AccessOperator);
+
 			Debug.Console(0, this, "Constructing new {0} instance", name);
 
 			// TODO [ ] Update the constructor as needed for the plugin device being developed
@@ -241,6 +283,6 @@ namespace MockOccupancyDetector
 			// TODO [ ] Update Poll method as needed for the plugin being developed
 			throw new System.NotImplementedException();
 		}
-	}
+    }
 }
 

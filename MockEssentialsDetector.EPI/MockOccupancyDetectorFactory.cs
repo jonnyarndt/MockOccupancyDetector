@@ -39,7 +39,7 @@ namespace MockOccupancyDetector
 
             // In the constructor we initialize the list with the typenames that will build an instance of this device
 			// TODO [ ] Update the TypeNames for the plugin being developed
-            TypeNames = new List<string>() { "examplePluginDevice" };
+            TypeNames = new List<string>() { "mockOccupancyDetector" };
         }
         
 		/// <summary>
