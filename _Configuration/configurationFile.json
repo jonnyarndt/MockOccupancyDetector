@@ -23,97 +23,28 @@
                 "properties": {}
             },
             {
-                "key": "comm-1",
+                "name": "OccDetector",
+                "key": "mockOccupancyDetector",
+                "type": "mockOccupancyDetector",
                 "uid": 1,
-                "name": "Generic comm 1",
-                "type": "genericComm",
-                "group": "comm",
+                "group": "sensor",
                 "properties": {
-                    "control": {
-                        "comParams": {
-                            "hardwareHandshake": "None",
-                            "parity": "None",
-                            "protocol": "RS232",
-                            "baudRate": 9600,
-                            "dataBits": 8,
-                            "softwareHandshake": "None",
-                            "stopBits": 1
-                        },
-                        "controlPortNumber": 1,
+                    "//control": {
+                        "method": "tcpip",
                         "controlPortDevKey": "processor",
-                        "method": "com"
-                    }
-                }
-            },
-            {
-                "key": "tcp-2",
-                "uid": 2,
-                "name": "Generic TCP 2",
-                "type": "ciscowebex",
-                "group": "comm",
-                "properties": {
-                    "control": {
+                        "controlPortNumber": 1,
+                        "polltimeMs": 30000,
+                        "warningTimeoutMs": 180000,
+                        "errorTimeoutMs": 300000,
                         "tcpSshProperties": {
-                            "username": "",
+                            "port": 1703,
+                            "address": "10.1.10.254",
+                            "username": "admin",
+                            "password": "crestron",
                             "autoReconnect": true,
-                            "AutoReconnectIntervalMs": 2000,
-                            "port": 2022,
-                            "address": "10.1.10.109",
-                            "password": ""
-                        },
-                        "method": "tcpip"
-                    }
-                }
-            },
-            {
-                "key": "tcp-3",
-                "uid": 3,
-                "name": "Generic TCP 3",
-                "type": "genericcomm",
-                "group": "comm",
-                "properties": {
-                    "control": {
-                        "tcpSshProperties": {
-                            "username": "",
-                            "autoReconnect": true,
-                            "AutoReconnectIntervalMs": 2000,
-                            "port": 2023,
-                            "address": "10.1.10.109",
-                            "password": ""
-                        },
-                        "method": "tcpip"
-                    }
-                }
-            },
-            {
-                "key": "commBridge-1",
-                "uid": 18,
-                "name": "Essentials Comm Bridge 1",
-                "group": "api",
-                "type": "eiscapiadvanced",
-                "properties": {
-                    "control": {
-                        "tcpSshProperties": {
-                            "address": "127.0.0.2",
-                            "port": 0
-                        },
-                        "ipid": "B1",
-                        "method": "ipidTcp"
-                    },
-                    "devices": [
-                        {
-                            "deviceKey": "comm-1",
-                            "joinStart": 11
-                        },
-                        {
-                            "deviceKey": "tcp-2",
-                            "joinStart": 21
-                        },
-                        {
-                            "deviceKey": "tcp-3",
-                            "joinStart": 31
+                            "autoReconnectIntervalMs": 10000
                         }
-                    ]
+                    }
                 }
             }
         ],

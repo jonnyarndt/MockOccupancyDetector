@@ -72,20 +72,20 @@ namespace MockOccupancyDetector
 			//var method = dc.Properties["control"].Value<string>("method");
 			
 			// Method 2 - Returns a JValue, has to be casted to string
-	        var username = (string)dc.Properties["control"]["tcpSshProperties"]["username"];
-			var password = (string)dc.Properties["control"]["tcpSshProperties"]["password"];
-	        var method = (string)dc.Properties["control"]["method"];
+            //var username = (string)dc.Properties["control"]["tcpSshProperties"]["username"];
+            //var password = (string)dc.Properties["control"]["tcpSshProperties"]["password"];
+            //var method = (string)dc.Properties["control"]["method"];
 	        
 			// build the plugin device comms & check for null
 			// TODO { ] As of PepperDash Core 1.0.41, HTTP and HTTPS are not valid eControlMethods and will throw an exception.
-			var comms = CommFactory.CreateCommForDevice(dc);
-			if (comms == null)
-			{
-				Debug.Console(0, "[{0}] Factory: failed to create comm for {1}", dc.Key, dc.Name);
-				return null;
-			}
+            //var comms = CommFactory.CreateCommForDevice(dc);
+            //if (comms == null)
+            //{
+            //    Debug.Console(0, "[{0}] Factory: failed to create comm for {1}", dc.Key, dc.Name);
+            //    return null;
+            //}
 
-            return new MockOccupancyDetector(dc.Key, dc.Name, propertiesConfig, comms);
+            return new MockOccupancyDetector(dc.Key, dc.Name, propertiesConfig);//, comms);
         }
 
     }

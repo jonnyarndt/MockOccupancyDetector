@@ -13,9 +13,9 @@ namespace MockOccupancyDetector
 	/// <example>
 	/// "EssentialsPluginConfigObjectTemplate" renamed to "SamsungMdcConfig"
 	/// </example>
-	[ConfigSnippet("\"properties\":{\"control\":{}")]
-	public class MockOccupancyDetectorPluginConfigObject
-	{
+    //[ConfigSnippet("\"properties\":{\"control\":{}")]
+    public class MockOccupancyDetectorPluginConfigObject
+    {
 		/// <summary>
 		/// JSON control object
 		/// </summary>
@@ -50,8 +50,8 @@ namespace MockOccupancyDetector
 		///	}
 		/// </code>
 		/// </example>
-		[JsonProperty("control")]
-		public EssentialsControlPropertiesConfig Control { get; set; }
+		/// [JsonProperty("control")]
+		/// public EssentialsControlPropertiesConfig Control { get; set; }
 
 		/// <summary>
 		/// Serializes the poll time value
@@ -69,8 +69,8 @@ namespace MockOccupancyDetector
 		/// }
 		/// </code>
 		/// </example>
-		[JsonProperty("pollTimeMs")]
-		public long PollTimeMs { get; set; }
+		/// [JsonProperty("pollTimeMs")]
+		/// public long PollTimeMs { get; set; }
 
 		/// <summary>
 		/// Serializes the warning timeout value
@@ -88,8 +88,8 @@ namespace MockOccupancyDetector
 		/// }
 		/// </code>
 		/// </example>
-		[JsonProperty("warningTimeoutMs")]
-		public long WarningTimeoutMs { get; set; }
+		/// [JsonProperty("warningTimeoutMs")]
+		/// public long WarningTimeoutMs { get; set; }
 
 		/// <summary>
 		/// Serializes the error timeout value
@@ -107,8 +107,8 @@ namespace MockOccupancyDetector
 		/// }
 		/// </code>
 		/// </example>
-		[JsonProperty("errorTimeoutMs")]
-		public long ErrorTimeoutMs { get; set; }
+		/// [JsonProperty("errorTimeoutMs")]
+		/// public long ErrorTimeoutMs { get; set; }
 
 		/// <summary>
 		/// Example dictionary of objects
@@ -138,8 +138,8 @@ namespace MockOccupancyDetector
 		/// }
 		/// </code>
 		/// </example>
-		[JsonProperty("DeviceDictionary")]
-		public Dictionary<string, MockOccupancyDetectorPluginConfigObjectDictionary> DeviceDictionary { get; set; }
+		/// [JsonProperty("DeviceDictionary")]
+		/// public Dictionary<string, MockOccupancyDetectorPluginConfigObjectDictionary> DeviceDictionary { get; set; }
 
 		/// <summary>
 		/// Constuctor
@@ -148,10 +148,10 @@ namespace MockOccupancyDetector
 		/// If using a collection you must instantiate the collection in the constructor
 		/// to avoid exceptions when reading the configuration file 
 		/// </remarks>
-		public MockOccupancyDetectorPluginConfigObject()
-		{
-			DeviceDictionary = new Dictionary<string, MockOccupancyDetectorPluginConfigObjectDictionary>();
-		}
+		/// public MockOccupancyDetectorPluginConfigObject()
+        ///{
+            /// DeviceDictionary = new Dictionary<string, MockOccupancyDetectorPluginConfigObjectDictionary>();
+        //}
 	}
 
 	/// <summary>
@@ -172,24 +172,24 @@ namespace MockOccupancyDetector
 	/// }
 	/// </code>
 	/// </example>
-	public class MockOccupancyDetectorPluginConfigObjectDictionary
-	{
-		/// <summary>
-		/// Serializes collection name property
-		/// </summary>
-		/// <remarks>
-		/// This is an example collection of configuration objects.  This can be modified or deleted as needed for the plugin being built.
-		/// </remarks>
-		[JsonProperty("name")]
-		public string Name { get; set; }
+    //public class MockOccupancyDetectorPluginConfigObjectDictionary
+    //{
+    //    /// <summary>
+    //    /// Serializes collection name property
+    //    /// </summary>
+    //    /// <remarks>
+    //    /// This is an example collection of configuration objects.  This can be modified or deleted as needed for the plugin being built.
+    //    /// </remarks>
+    //    [JsonProperty("name")]
+    //    public string Name { get; set; }
 
-		/// <summary>
-		/// Serializes collection value property
-		/// </summary>
-		/// <remarks>
-		/// This is an example collection of configuration objects.  This can be modified or deleted as needed for the plugin being built.
-		/// </remarks>
-		[JsonProperty("value")]
-		public uint Value { get; set; }
-	}
+    //    /// <summary>
+    //    /// Serializes collection value property
+    //    /// </summary>
+    //    /// <remarks>
+    //    /// This is an example collection of configuration objects.  This can be modified or deleted as needed for the plugin being built.
+    //    /// </remarks>
+    //    [JsonProperty("value")]
+    //    public uint Value { get; set; }
+    //}
 }
