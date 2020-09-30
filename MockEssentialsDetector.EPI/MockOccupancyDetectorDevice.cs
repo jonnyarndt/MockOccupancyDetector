@@ -103,13 +103,36 @@ namespace MockOccupancyDetector
         {
             bool s;
             if (state == "true")
+            {
                 s = true;
+                Debug.Console(1, "Occupied = true");
+            }
             else if (state == "false")
+            {
                 s = false;
+                Debug.Console(1, "Occupied = false");
+            }
             else
                 return;
 
             IsOccupied = s;
+        }
+
+        public string GetOccupiedStatus()
+        {
+            string s;
+            if (IsOccupied)
+            {
+                s = "true";
+                Debug.Console(1, "Occupied = true");
+                return s;
+            }
+            else
+            {
+                s = "false";
+                Debug.Console(1, "Occupied = false");
+                return s;
+            }
         }
 
 		/// <summary>
@@ -125,6 +148,7 @@ namespace MockOccupancyDetector
             RoomIsOccupiedFeedback = new BoolFeedback(() => IsOccupied);
 
             CrestronConsole.AddNewConsoleCommand((s) => SetOccupiedStatus(s), "setOccupiedState", "Sets the state of the mock Occ detector [true/false]", ConsoleAccessLevelEnum.AccessOperator);
+            CrestronConsole.AddNewConsoleCommand((s) => GetOccupiedStatus(), "getOccupiedState", "Gets the state of the mock Occ detector", ConsoleAccessLevelEnum.AccessOperator);
 
 			Debug.Console(0, this, "Constructing new {0} instance", name);
 
